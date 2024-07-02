@@ -129,6 +129,70 @@ __global__ void resize_bilinear_BGR2RGB_kernel(
     }
 }
 
+__global__ void resize_bilinear_BGR2RGB_center_kernel(
+    uint8_t*tar, uint8_t* src,
+    int tarW, int tarH,
+    int srcW, int srcH,
+    float scaled_w, float scaled_h
+)
+{
+    /* 插值后的图的像素索引 */
+    int x = blockIdx.x * blockDim.x + threadIdx.x;
+    int y = blockIdx.y * blockDim.y + threadIdx.y;
+
+    /* 反向映射法 */ 
+    /* floor向下取整 */
+    int src_y1 = floor((y + 0.5) * scaled_h - 0.5);
+    int src_x1 = floor((x + 0.5) * scaled_w - 0.5);
+    int src_y2 = src_y1 + 1;
+    int src_x2 = src_x1 + 1;
+
+    if(src_x1 < 0 || src_y1 < 0 || src_x1 > srcW || src_y1 > srcH)
+    {
+        /* 对于越界的部分不做处理 */
+    }
+    else
+    {
+        /* 计算映射点的坐标与左下点的距离差 */
+        float th = ((y + 0.5) * scaled_h - 0.5) - src_y1;
+        float tw = ((x + 0.5) * scaled_w - 0.5) - src_x1;
+
+        float rightdown_ratio = (1.0 - tw) * (1.0 - th);
+        float leftdown_ratio  = tw * (1.0 - th);
+        float rightup_ratio   = (1.0 - tw) * th;
+        float leftup_ratio    = tw * th;
+
+
+        /* 计算原图上四个点的坐标索引 */
+        int src_leftup      = (src_y1 * srcW + src_x1) * 3;
+        int src_rightup     = (src_y1 * srcW + src_x2) * 3;
+        int src_leftdown    = (src_y2 * srcW + src_x1) * 3;
+        int src_rightdown   = (src_y2 * srcW + src_x2) * 3; 
+
+        /* 计算插值图上点的坐标索引 */
+        y = y + int(tarH / 2) - int(srcH / scaled_h / 2);
+
+        int tar_pixel = (y * tarW + x) * 3;
+
+        /* 双线性插值 + BGR2RGB */
+        tar[tar_pixel + 0] = round(leftup_ratio * src[src_rightdown + 2] +
+                                    leftdown_ratio  * src[src_rightup + 2] +
+                                    rightup_ratio   * src[src_leftdown + 2] +
+                                    rightdown_ratio * src[src_leftup + 2]);
+        
+        tar[tar_pixel + 1] = round(leftup_ratio * src[src_rightdown + 1] +
+                                    leftdown_ratio  * src[src_rightup + 1] +
+                                    rightup_ratio   * src[src_leftdown + 1] +
+                                    rightdown_ratio * src[src_leftup + 1]);
+
+        tar[tar_pixel + 2] = round(leftup_ratio * src[src_rightdown + 0] +
+                                    leftdown_ratio  * src[src_rightup + 0] +
+                                    rightup_ratio   * src[src_leftdown + 0] +
+                                    rightdown_ratio * src[src_leftup + 0]);
+    }
+}
+
+
 
 void resize_bilinear_gpu(
     uint8_t* d_tar, uint8_t* d_src, 
@@ -160,7 +224,8 @@ void resize_bilinear_gpu(
         break;
     case 2:
         resize_bilinear_BGR2RGB_kernel <<<dimGrid, dimBlock>>> (d_tar, d_src, tarW, tarH, srcW, srcH, scaled_w, scaled_h);
-
+    case 3:
+        resize_bilinear_BGR2RGB_center_kernel <<<dimGrid, dimBlock>>> (d_tar, d_src, tarW, tarH, srcW, srcH, scaled_w, scaled_h);
     default:
         break;
     }
