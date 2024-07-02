@@ -12,7 +12,7 @@ int main()
 {
     Timer timer;
 
-    string file_path     = "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/CUDA课程文件/chapter2-cuda-programming/2.10-bilinear-interpolation/data/deer.png";
+    string file_path     = "";
     string output_prefix = "";
     string output_path   = "";
 
@@ -21,7 +21,7 @@ int main()
     int dst_w = 250;
     int tactis;
 
-    tactis = 0;
+    tactis = 2;
     cv::Mat resized_gpu;
     resized_gpu = preprocess_gpu(input, dst_h, dst_w, timer, tactis);
     cv::namedWindow("test", cv::WINDOW_NORMAL);

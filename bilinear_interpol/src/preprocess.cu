@@ -143,6 +143,13 @@ void resize_bilinear_gpu(
     float scaled_h = (float)srcH / tarH;
     float scaled_w = (float)srcW / tarW;
 
+    if(tactis > 1)
+    {
+        float scale = (scaled_h > scaled_w ? scaled_h : scaled_w);
+        scaled_h = scale;
+        scaled_w = scale;
+    }
+
     switch(tactis)
     {
     case 0:
@@ -151,6 +158,9 @@ void resize_bilinear_gpu(
     case 1:
         resize_bilinear_BGR2RGB_kernel <<<dimGrid, dimBlock>>> (d_tar, d_src, tarW, tarH, srcW, srcH, scaled_w, scaled_h);
         break;
+    case 2:
+        resize_bilinear_BGR2RGB_kernel <<<dimGrid, dimBlock>>> (d_tar, d_src, tarW, tarH, srcW, srcH, scaled_w, scaled_h);
+
     default:
         break;
     }
