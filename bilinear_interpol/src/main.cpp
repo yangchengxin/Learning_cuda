@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
     Timer timer;
-    string file_path    = "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/CUDA课程文件/chapter2-cuda-programming/2.10-bilinear-interpolation/data/deer.png";
+    string file_path     = "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/CUDA课程文件/chapter2-cuda-programming/2.10-bilinear-interpolation/data/deer.png";
     string output_prefix = "";
     string output_path   = "";
 
