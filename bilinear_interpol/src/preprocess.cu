@@ -224,8 +224,10 @@ void resize_bilinear_gpu(
         break;
     case 2:
         resize_bilinear_BGR2RGB_kernel <<<dimGrid, dimBlock>>> (d_tar, d_src, tarW, tarH, srcW, srcH, scaled_w, scaled_h);
+        break;
     case 3:
         resize_bilinear_BGR2RGB_center_kernel <<<dimGrid, dimBlock>>> (d_tar, d_src, tarW, tarH, srcW, srcH, scaled_w, scaled_h);
+        break;
     default:
         break;
     }
