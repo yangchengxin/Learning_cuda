@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/build",
+  "command": "/usr/bin/c++  -DAPI_EXPORTS -I/usr/local/cuda-11.7/include -I/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/include -isystem /usr/local/include/opencv4  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/bilinear.dir/src/main.cpp.o -c /media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/main.cpp",
+  "file": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/main.cpp"
+},
+{
+  "directory": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/build",
+  "command": "/usr/bin/c++  -DAPI_EXPORTS -I/usr/local/cuda-11.7/include -I/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/include -isystem /usr/local/include/opencv4  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/bilinear.dir/src/preprocess.cpp.o -c /media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/preprocess.cpp",
+  "file": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/preprocess.cpp"
+},
+{
+  "directory": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/build",
+  "command": "/usr/local/cuda-11.7/bin/nvcc  -DAPI_EXPORTS -I/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/include -isystem=/usr/local/include/opencv4  -g   -std=c++11 -std=c++11 -x cu -c /media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/preprocess.cu -o CMakeFiles/bilinear.dir/src/preprocess.cu.o",
+  "file": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/preprocess.cu"
+},
+{
+  "directory": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/build",
+  "command": "/usr/bin/c++  -DAPI_EXPORTS -I/usr/local/cuda-11.7/include -I/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/include -isystem /usr/local/include/opencv4  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/bilinear.dir/src/timer.cpp.o -c /media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/timer.cpp",
+  "file": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/timer.cpp"
+},
+{
+  "directory": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/build",
+  "command": "/usr/bin/c++  -DAPI_EXPORTS -I/usr/local/cuda-11.7/include -I/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/include -isystem /usr/local/include/opencv4  -g   -std=c++11 -std=gnu++11 -o CMakeFiles/bilinear.dir/src/utils.cpp.o -c /media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/utils.cpp",
+  "file": "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/src/utils.cpp"
+}
+]

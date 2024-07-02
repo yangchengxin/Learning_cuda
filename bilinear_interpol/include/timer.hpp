@@ -1,0 +1,67 @@
+#ifndef __TIMER_HPP__
+#define __TIMER_HPP__
+
+#include <chrono>
+#include <ratio>
+#include <string>
+#include <cuda_runtime.h>
+#include "utils.hpp"
+
+class Timer
+{
+public:
+    using s  = std::ratio<1, 1>;
+    using ms = std::ratio<1, 1000>;
+    using us = std::ratio<1, 1000000>;
+    using ns = std::ratio<1, 1000000000>;
+
+public:
+    Timer();
+    ~Timer();
+
+public:
+    void start_cpu();
+    void stop_cpu();
+    void start_gpu();
+    void stop_gpu();
+
+    template<typename span>
+    void duration_cpu(std::string msg);
+
+    void duration_gpu(std::string msg);
+
+private:
+    std::chrono::time_point<std::chrono::high_resolution_clock> _cstart;
+    std::chrono::time_point<std::chrono::high_resolution_clock> _cstop;
+    cudaEvent_t _gstart;
+    cudaEvent_t _gstop;
+    float _timeElasped;
+};
+
+template<typename span>
+void Timer::duration_cpu(std::string msg)
+{
+    std::string str;
+
+    if(std::is_same<span, s>::value)
+    {
+        str = "s";
+    }
+    else if(std::is_same<span, ms>::value)
+    {
+        str = "ms";
+    }
+    else if(std::is_same<span, us>::value)
+    {
+        str = "us";
+    }
+    else if(std::is_same<span, ns>::value)
+    {
+        str = "ns";
+    }
+
+    std::chrono::duration<double, span> time = _cstop - _cstart;
+    LOG("%-60s uses %.6lf %s", msg.c_str(), time.count(), str.c_str());
+}
+
+#endif

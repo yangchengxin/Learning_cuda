@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.cu": "cuda-cpp",
+        "cmath": "cpp",
+        "chrono": "cpp"
+    }
+}

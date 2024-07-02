@@ -1,0 +1,59 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "bilinear",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "bilinear::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bilinear-Debug-0e86d4d87d03e04f660a.json",
+					"name" : "bilinear",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol/build",
+		"source" : "/media/mw/大橙子的硬盘/deep_learning/ycx_notebook/7.CUDA_TensorRT/my_cuda_practice/bilinear_interpol"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}
